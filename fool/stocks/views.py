@@ -9,6 +9,4 @@ def index(request):
     with open("./stocks/quotes_data.json", encoding='utf-8') as json_data:
         data = json.load(json_data)
 
-    #return HttpResponse(template.render('index.html'))
-    return render(request, 'stocks/index.html', {})
-    #return render_to_response('fool/index.html')
+    return render(request, 'stocks/index.html', {'data':data})
