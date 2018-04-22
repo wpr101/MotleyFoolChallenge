@@ -1,5 +1,63 @@
+<!DOCTYPE html>
 <html>
-  {% for company in data %}
-    <h1>{{company.CompanyName}}</h1>
-  {% endfor %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Motley Fool Stock Data</h2>
+<p>Search for stat or value</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+{% for company in data %}
+<h1>{{company.CompanyName}} ({{company.Symbol}})</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Stat</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+    {% for stat in company.items %}
+    <tr>
+      <td>{{ stat.0 }}</td>
+      <td>{{ stat.1 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endfor %}
+
+
+</body>
 </html>
+
