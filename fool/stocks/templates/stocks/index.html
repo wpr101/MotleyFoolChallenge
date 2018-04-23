@@ -38,7 +38,7 @@ tr:nth-child(even) {
 <br><br>
 
 {% for company in data %}
-<h1>{{company.CompanyName}} ({{company.Symbol}})</h1>
+<h1>{{company.CompanyName}} (<a href="https://finance.yahoo.com/quote/{{company.Symbol}}">{{company.Symbol}}</a>)</h1>
 <table>
   <thead>
     <tr>
