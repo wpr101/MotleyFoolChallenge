@@ -1,7 +1,5 @@
 #!/bin/bash
 INSTALL_DIR=/opt/fool
-
-#mkdir "$INSTALL_DIR"
 git clone https://github.com/wpr101/MotleyFoolChallenge.git "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 pyvenv .
